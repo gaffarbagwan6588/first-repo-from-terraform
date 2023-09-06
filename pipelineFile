@@ -1,0 +1,58 @@
+pipeline {
+    agent any
+    environment{
+        name="Gaffar Bagwan"
+    }
+    parameters{
+        string(name:"Person", defaultValue:'Gaffar Bag12', description:"who are you ???")
+    }
+    stages {
+        stage('Run Commands') {
+            steps {
+                bat '''
+                date
+                dir
+                '''
+            }
+        }
+        stage('Environment Variable') {
+            steps {
+                bat "echo Build - ${BUILD_ID}"
+                                bat "echo Name = :- - ${name}"
+            }
+        
+        }
+        stage('Parameters'){
+            steps{
+                echo 'Deploy on Test'
+                bat "echo ${name}"
+                bat "echo ${Person}"
+            }
+        }
+        stage('Continue ???'){
+            input {
+                message "should we continue ??"
+                ok "yes we should"
+            }
+            steps{
+                echo 'Deploy on Prod'
+            }
+        }
+        stage('Deploy on Prod'){
+            steps{
+                echo 'Deploy on Production'
+            }
+        }
+    }
+    post{
+        always{
+            echo "I will always say Hello again!"
+        }
+        failure{
+            echo 'Failure...'
+        }
+        success{
+            echo 'Success...'
+        }
+    }
+}
