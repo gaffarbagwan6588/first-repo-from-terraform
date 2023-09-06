@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment{
-        name="Gaffar Bagwan"
+        name="Gaffar123456"
     }
     parameters{
         string(name:"Person", defaultValue:'Gaffar Bag12', description:"who are you ???")
@@ -40,7 +40,7 @@ pipeline {
         }
         stage('Deploy on Prod'){
             steps{
-                echo 'Deploy on Production'
+                echo ' 123456 Production 123456'
             }
         }
     }
